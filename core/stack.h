@@ -5,8 +5,7 @@
 
 struct stack 
 {
-    struct token* top;
-    struct token *bottom;
+    struct token *top;
     size_t size;
 };
 

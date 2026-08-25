@@ -24,10 +24,10 @@ void queue_push(struct queue *q, struct token *t);
 struct token *queue_pop(struct queue *q);
 
 
-/* peek the type of the token at the tail of the queuem returns NONE if empty */
+/* peek the type of the token at the head of the queuem returns NONE if empty */
 enum token_type queue_peek_type(struct queue *q);
 
-/* peek the value of the token at the tail of the queue, returns 0 if empty */
+/* peek the value of the token at the head of the queue, returns 0 if empty */
 double queue_peek_value(struct queue *q);
 
 #endif /* ! QUEUE_H */

@@ -15,6 +15,7 @@ struct token
 {
     enum token_type type;
     double value;
+    struct token *next;
 };
 
 /* init a token */

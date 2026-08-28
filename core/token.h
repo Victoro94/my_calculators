@@ -1,6 +1,8 @@
 #ifndef TOKEN_H
 #define TOKEN_H
 
+#include <stddef.h>
+
 enum token_type
 {
     MUL,
@@ -21,7 +23,7 @@ struct token
 /* init a token */
 struct token *token_init(enum token_type, double value);
 
-/* destroy a token */
-void token_destroy*(struct token *t);
+/* destroy a token and destroy recusively the next */
+void token_destroy(struct token *t);
 
 #endif /* ! TOKEN_H */

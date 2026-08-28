@@ -1,7 +1,6 @@
 #include "queue.h"
 
 #include <stdlib.h>
-#include <stddef.h>
 
 /* init a queue for tokens */ 
 struct queue *queue_init()
@@ -47,10 +46,17 @@ void queue_push(struct queue *q, struct token *t)
     {
         return;
     }
-
     q -> size += 1;
-    t -> next = q -> tail;
+    if (q -> head == NULL)
+    {
+        q -> head = t;
+    }
+    else
+    {
+        q -> tail -> next = t;
+    }
     q -> tail = t;
+    t -> next = NULL;
 }
   
 /* pop a token from the queue, returns NULL if empty */
@@ -64,6 +70,7 @@ struct token *queue_pop(struct queue *q)
     struct token *t = q -> head;
     q -> head = t -> next;
     q -> size -= 1;
+    t -> next = NULL;
 
     return t;
 }

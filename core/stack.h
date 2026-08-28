@@ -25,9 +25,9 @@ struct token *stack_pop(struct stack *s);
 
 
 /* peek the value of the token on the top, returns 0 if empty */
-double *stack_peek_value(struct stack *s);
+double stack_peek_value(struct stack *s);
 
 /* peek the type of the token on the top, returns NONE if empty */
-enum token_type *stack_peek_type(struct stack *s);
+enum token_type stack_peek_type(struct stack *s);
 
 #endif /* ! STACK_H */

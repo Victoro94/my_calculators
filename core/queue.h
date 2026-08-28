@@ -8,7 +8,7 @@ struct queue
     struct token *head;
     struct token *tail;
     size_t size;
-}
+};
 
 /* init a queue for tokens */
 struct queue *queue_init();

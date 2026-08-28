@@ -1,7 +1,6 @@
 #include "stack.h"
 
 #include <stdlib.h>
-#include <stddef.h>
 
 
 /* init a stack for tokens */
@@ -43,8 +42,9 @@ void stack_push(struct stack* s, struct token* t)
     {
         return;
     }
-
-    t -> next = s -> top; 
+    s -> size += 1;
+    t -> next = s -> top;
+    s -> top = t;
 }
 
 /* pop a token from the stackm returns NULL if empty */
@@ -57,13 +57,14 @@ struct token *stack_pop(struct stack *s)
     struct token *t = s -> top;
     s -> top = t -> next;
     s -> size -= 1;
+    t -> next = NULL;
 
     return t;
 }
 
 
 /* peek the value of the token on the top, returns 0 if empty */
-double *stack_peek_value(struct stack *s)
+double stack_peek_value(struct stack *s)
 {
     if (s == NULL || s -> size == 0)
     {
@@ -74,7 +75,7 @@ double *stack_peek_value(struct stack *s)
 }
 
 /* peek the type of the token on the top, returns NONE if empty */
-enum token_type *stack_peek_type(struct stack *s)
+enum token_type stack_peek_type(struct stack *s)
 {
     if (s == NULL || s -> size == 0)
     {
